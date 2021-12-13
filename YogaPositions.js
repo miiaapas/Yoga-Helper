@@ -1,73 +1,19 @@
-import React, { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button, FlatList, TextInput, Alert, Image} from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import React from 'react';
+import {StyleSheet, View, Text, ImageBackground, Image} from 'react-native';
+import { color, ScreenHeight, ScreenWidth } from 'react-native-elements/dist/helpers';
 
 
-export default function YogaPositions() {
-  const [keyword, setKeyword] = useState('');
-const [repositories, setRepositories] = useState([]);
-
-const getRepositories = () => {
-  const url = `https://lightning-yoga-api.herokuapp.com/yoga_poses?english_name=${keyword}`
-  fetch(url)
-  .then(response => response.json())
-  .then(data => {
-    setRepositories(data.items)})
-  .catch(error => {
-    Alert.alert('Error', error);
-  });
-
-}
-
-const listSeparator = () => {
-  return (
-    <View
-      style={{
-        height: 1,
-        width: "80%",
-        backgroundColor: "#CED0CE",
-        marginLeft: "10%"
-      }}
-    />
-  );
-};  
+export default function SettingScreen() {
   return (
     <View style={styles.container}>
-      <StatusBar hidden={true} />
-      <Text style={{fontSize: 26}}>Yoga Positions</Text>
-      <FlatList
-        style={{marginLeft : "5%", marginTop: "10%"}}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({item}) => {
-          return(
-          <View>
-            <Text
-              style={{fontSize: 18, fontWeight: "bold"}}>
-              Name in english: {item.english_name}
-              </Text>
-            <Text
-              style={{fontSize: 18, fontWeight: "bold"}}>
-              Name in english: {item.sanskrit_name}     
-              </Text>   
-          
-               
-          </View>
-          );
-            }}
-      data={repositories} 
-      ItemSeparatorComponent={listSeparator} />
-      
-      <Text style={{marginBottom: "10%", textAlign: 'center'}}>
-      Take a look at the different yoga positions and their names in english ans sanskrit</Text>
-      <TextInput
-      style={{fontSize:18, width:100}}
-      placeholder='keyword'
-      onChangeText={text => setKeyword(text)}
+      <Image
+      style={{ width: ScreenWidth, height: ScreenHeight, position: 'absolute'}}
+      source={require('./tausta.jpg')} 
       />
-      <Button title="Find" onPress={getRepositories}/>
-      
-      
+     <Text style={{fontSize: 22, color: '#fffafa'}}>YOGA HELPER</Text>
+     
+     <Text style={{fontSize: 16, color: '#fffafa', padding: "5%"}}>{'\n'}Here you can take a look of the best yoga poses.
+     You can see how the position are done and also their name in english and sanskrit. </Text>
     </View>
   );
 }
@@ -78,4 +24,4 @@ const listSeparator = () => {
       alignItems: 'center',
       justifyContent: 'center',
     },
-  });  
+  }); 

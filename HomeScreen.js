@@ -1,10 +1,19 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View, Text, ImageBackground, Image} from 'react-native';
+import { color, ScreenHeight, ScreenWidth } from 'react-native-elements/dist/helpers';
+
 
 export default function SettingScreen() {
   return (
     <View style={styles.container}>
-      <Text>Home!</Text>
+      <Image
+      style={{ width: ScreenWidth, height: ScreenHeight, position: 'absolute'}}
+      source={require('./tausta.jpg')} 
+      />
+     <Text style={{fontSize: 22, color: '#fffafa'}}>YOGA HELPER</Text>
+     
+     <Text style={{fontSize: 16, color: '#fffafa', padding: "5%"}}>{'\n'}Here you can take a look of the best yoga poses.
+     You can see how the position are done and also their name in english and sanskrit. </Text>
     </View>
   );
 }
