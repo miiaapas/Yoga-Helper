@@ -1,6 +1,6 @@
 import React from 'react';
-import {StyleSheet, View, Text, ImageBackground, Image} from 'react-native';
-import { color, ScreenHeight, ScreenWidth } from 'react-native-elements/dist/helpers';
+import {StyleSheet, View, Text, Image} from 'react-native';
+import { ScreenHeight, ScreenWidth } from 'react-native-elements/dist/helpers';
 
 
 export default function SettingScreen() {
@@ -8,7 +8,7 @@ export default function SettingScreen() {
     <View style={styles.container}>
       <Image
       style={{ width: ScreenWidth, height: ScreenHeight, position: 'absolute'}}
-      source={require('./tausta.jpg')} 
+      source={require('./tahti_taivas.jpg')} 
       />
      <Text style={{fontSize: 22, color: '#fffafa'}}>YOGA HELPER</Text>
      
